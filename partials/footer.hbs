@@ -4,12 +4,11 @@ This footer template is shared across all the pages.
 
 <footer class="m-footer">
   <div class="m-footer__content">
-    <p class="m-footer-copyright">
-      <span>{{@site.title}} &copy; {{date format="YYYY"}}</span>
-      <span>&nbsp; &bull; &nbsp;</span>
-      <span>Made with ♥ by <a href="http://binco.me">Binco</a></span>
-    </p>
-
+    {{#if @site.secondary_navigation}}
+      <nav class="m-footer__nav-secondary" role="navigation" aria-label="{{t "Secondary menu in footer"}}">
+        {{navigation type="secondary"}}
+      </nav>
+    {{/if}}
     <nav class="m-footer-social">
       {{#if @site.facebook}}
         <a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener" aria-label="Facebook">
@@ -21,17 +20,17 @@ This footer template is shared across all the pages.
           <span class="icon-twitter" aria-hidden="true"></span>
         </a>
       {{/if}}
-      <a href="https://instagram.com/owo.sound" rel="noopener" target="_blank"><span class="icon-instagram" aria-hidden="true"></span></a>
-      <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss" aria-label="RSS">
+      <a href="{{@site.url}}/rss" aria-label="RSS">
         <span class="icon-rss" aria-hidden="true"></span>
       </a>
     </nav>
     <p class="m-footer-copyright">
-      <span><a href="{{@blog.url}}/contattaci">Contattaci</a></span>
+      <span>{{@site.title}} &copy; {{date format="YYYY"}}</span>
       <span>&nbsp; &bull; &nbsp;</span>
-      <span><a href="https://angel.co/owo-sound/jobs">Lavora con noi</a></span>
-      <span>&nbsp; &bull; &nbsp;</span>
-      <span><a href="{{@blog.url}}/contattaci">Sponsorizza</a></span>
+      <span>{{t "Published with"}} <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="{{asset "html/javascript.html"}}" rel="jslicense">{{t "JavaScript license information"}}</a>
     </p>
   </div>
 </footer>
